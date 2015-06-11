@@ -23,29 +23,29 @@ require 'minitest/autorun'
 module Luhn
   def self.is_valid?(number)
 
-s= 4194560385008504
+    s= 4194560385008504
 
 
-#turned number into array
-arr1 = s.to_s.split('').map(&:to_i)
+    #turned number into array
+    arr1 = s.to_s.split('').map(&:to_i)
 
 
-#now if only I knew how to access every other index
+    #now if only I knew how to access every other index
 
-#doubled each number and put it into a new array
-arr2 = arr1.map {|x| x * 2 }
+    #doubled each number and put it into a new array
+    arr2 = arr1.map {|x| x * 2 }
 
-#thought I could map a new array to subtract 9 from each item
-#doesn't seem to be working
-arr3 = arr2.map {|y| y - 9}
+    #thought I could map a new array to subtract 9 from each item
+    #doesn't seem to be working
+    arr3 = arr2.map {|y| y - 9}
 
-print arr1
-puts
-puts
-print arr2
-puts
-puts
-print arr3
+    print arr1
+    puts
+    puts
+    print arr2
+    puts
+    puts
+    print arr3
 
   end
 end
