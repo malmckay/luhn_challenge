@@ -2,7 +2,7 @@
 arr2=[]
 arr.each do |i|
  x = 0
- 	while x < arr.length
+  while x < arr.length
  arr2 << arr[x+1]
  x += 1
 end
@@ -15,6 +15,14 @@ a = [1,2,3,4,5,6]
 print a.collect {|x| x * 2}
 print a.map.with_index {|x, i| x[i + 1]}
 =end
+
+# Include the minitest autorun library. This will let us run tests
+require 'minitest/autorun'
+
+# Write the implementation
+module Luhn
+  def self.is_valid?(number)
+
 s= 4194560385008504
 
 
@@ -38,3 +46,20 @@ print arr2
 puts
 puts
 print arr3
+
+  end
+end
+
+
+# Write some tests. These will automatically run when you run this file.
+class TestLuhn < MiniTest::Unit::TestCase
+
+  def test_luhn_valid
+    assert Luhn.is_valid?(4194560385008504)
+  end
+
+  def test_luhn_invalid
+    assert ! Luhn.is_valid?(4194560385008505)
+  end
+
+end
