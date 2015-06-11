@@ -22,31 +22,29 @@ require 'minitest/autorun'
 # Write the implementation
 module Luhn
   def self.is_valid?(number)
+    puts '' #blank line
 
-    s= number
+    s = number
+    puts "Number is #{s}"
 
 
     #turned number into array
     arr1 = s.to_s.split('')
+    puts "Splitting gives us arr1 which is #{arr1}"
 
 
     #now if only I knew how to access every other index
 
     #doubled each number and put it into a new array
     arr2 = arr1.map {|x| x * 2 }
+    puts "Multiplying by 2 gives us arr2 which is #{arr2}"
 
     #thought I could map a new array to subtract 9 from each item
     #doesn't seem to be working
     arr3 = arr2.map {|y| y - 9}
+    puts "Subtracting 9 gives us arr3 which is #{arr3}"
 
-    print arr1
-    puts
-    puts
-    print arr2
-    puts
-    puts
-    print arr3
-
+    puts "Done!"
   end
 end
 
