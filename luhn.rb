@@ -23,11 +23,11 @@ require 'minitest/autorun'
 module Luhn
   def self.is_valid?(number)
 
-    s= 4194560385008504
+    s= number
 
 
     #turned number into array
-    arr1 = s.to_s.split('').map(&:to_i)
+    arr1 = s.to_s.split('')
 
 
     #now if only I knew how to access every other index
