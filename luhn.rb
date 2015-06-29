@@ -32,19 +32,45 @@ module Luhn
     arr1 = s.to_s.split('')
     puts "Splitting gives us arr1 which is #{arr1}"
 
+    # reverse arr1 array
+    arr2 = arr1.reverse
+    puts "Reverse gives us arr2 which is #{arr2}"
 
-    #now if only I knew how to access every other index
+    #double every second digit then depending subtracting 9
+    x = 0
+    arr3 =[]
+    arr2.each do |num|
+    if x % 2 != 0
+      num_double = num.to_i * 2
+      if num_double >= 10
+        arr3 << num_double -9
+      else
+        arr3 << num_double
+      end
+    else 
+      arr3 << num.to_i
+    end
+    x += 1  
+    end
+    puts "Doubling every second digit and then if that num is >= 10 -9 gives us #{arr3}"
 
-    #doubled each number and put it into a new array
-    arr2 = arr1.map {|x| x * 2 }
-    puts "Multiplying by 2 gives us arr2 which is #{arr2}"
+    #sum the didgits
+    total = 0
+    arr3.each do |num|
+      total += num
+    end
+    puts "#{total}"
+    
+    #check if valid
+    if total % 10 ==0
+      puts "Credit card number is valid."
+      return true
+    else
+      puts "Credit card number is invalid."
+      return false
+    end
 
-    #thought I could map a new array to subtract 9 from each item
-    #doesn't seem to be working
-    arr3 = arr2.map {|y| y - 9}
-    puts "Subtracting 9 gives us arr3 which is #{arr3}"
-
-    puts "Done!"
+    
   end
 end
 
