@@ -21,56 +21,40 @@ require 'minitest/autorun'
 
 # Write the implementation
 module Luhn
+  def self.luhn_magic(integer, odd_even)
+    if odd_even % 2 != 0
+      doubled = integer * 2
+      doubled -= 9 if doubled >= 10
+      doubled
+    else
+      integer # 3
+    end
+  end
+
   def self.is_valid?(number)
-    puts '' #blank line
-
-    s = number
-    puts "Number is #{s}"
-
+    puts "" #blank line
 
     #turned number into array
-    arr1 = s.to_s.split('')
-    puts "Splitting gives us arr1 which is #{arr1}"
-
-    # reverse arr1 array
-    arr2 = arr1.reverse
-    puts "Reverse gives us arr2 which is #{arr2}"
+    right_to_left = number.to_s.split("").map(&:to_i).reverse
+    puts "Splitting gives us right_to_left which is #{right_to_left}"
 
     #double every second digit then depending subtracting 9
-    x = 0
-    arr3 =[]
-    arr2.each do |num|
-    if x % 2 != 0
-      num_double = num.to_i * 2
-      if num_double >= 10
-        arr3 << num_double -9
-      else
-        arr3 << num_double
-      end
-    else 
-      arr3 << num.to_i
-    end
-    x += 1  
-    end
-    puts "Doubling every second digit and then if that num is >= 10 -9 gives us #{arr3}"
-
-    #sum the didgits
     total = 0
-    arr3.each do |num|
-      total += num
+
+    right_to_left.each_with_index do |num, i|
+      total += luhn_magic(num, i)
     end
+
     puts "#{total}"
-    
+
     #check if valid
-    if total % 10 ==0
+    if total % 10 == 0
       puts "Credit card number is valid."
       return true
     else
       puts "Credit card number is invalid."
       return false
     end
-
-    
   end
 end
 
